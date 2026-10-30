@@ -1,0 +1,5 @@
+# direction,byte_address,full_512b_beats
+R,0x00000000,8
+R,0x00000200,8
+W,0x00001000,4
+R,0x00002000,4

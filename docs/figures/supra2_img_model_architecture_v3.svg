@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1120" viewBox="0 0 1800 1120"><defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#151b22"/></marker><marker id="mod" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#9a83ba"/></marker><marker id="ctx" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#739c58"/></marker></defs><rect width="100%" height="100%" fill="white"/><g font-family="Arial, Helvetica, sans-serif">
+<rect x="145" y="815" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="165" y="815" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="185" y="815" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="205" y="815" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="225" y="815" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="245" y="815" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="265" y="815" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<text x="215" y="872" font-size="30" text-anchor="middle" fill="#151b22" font-family="Georgia, serif" font-style="italic">hᵢ</text>
+<polyline points="215,815 215,748" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="60" y="688" width="310" height="60" rx="6" fill="#fff3cf" stroke="#caa33e" stroke-width="1.9"/>
+<text x="215" y="725.92" font-size="24" text-anchor="middle" fill="#151b22" >Gated Self-Attention</text>
+<polyline points="215,688 215,638" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="60" y="578" width="310" height="60" rx="6" fill="#e6f2dd" stroke="#739c58" stroke-width="1.9"/>
+<text x="215" y="615.92" font-size="24" text-anchor="middle" fill="#151b22" >Cross-Attention</text>
+<polyline points="215,578 215,528" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="60" y="468" width="310" height="60" rx="6" fill="#e5f0ff" stroke="#658fc6" stroke-width="1.9"/>
+<text x="215" y="505.92" font-size="24" text-anchor="middle" fill="#151b22" >Gated MLP</text>
+<polyline points="215,468 215,407" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="145" y="387" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="165" y="387" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="185" y="387" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="205" y="387" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="225" y="387" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="245" y="387" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="265" y="387" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<text x="215" y="363" font-size="30" text-anchor="middle" fill="#151b22" font-family="Georgia, serif" font-style="italic">hᵢ₊₁</text>
+<text x="215" y="924" font-size="28" text-anchor="middle" fill="#151b22" >DiT block × 14</text>
+<polyline points="395,449 625,107" fill="none" stroke="#151b22" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7" />
+<polyline points="395,765 625,994" fill="none" stroke="#151b22" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="7 7" />
+<polyline points="1040,995 730,995 730,711 1023,711" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="995" r="2.6" fill="#151b22"/>
+<polyline points="1040,688 705,688 705,467 1023,467" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="688" r="2.6" fill="#151b22"/>
+<polyline points="1040,435 680,435 680,90 1023,90" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="435" r="2.6" fill="#151b22"/>
+<rect x="970" y="1010" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="990" y="1010" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1010" y="1010" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1030" y="1010" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1050" y="1010" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1070" y="1010" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1090" y="1010" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<text x="1040" y="1065" font-size="29" text-anchor="middle" fill="#151b22" font-family="Georgia, serif" font-style="italic">hᵢ · 256 × 576</text>
+<polyline points="1040,1010 1040,975" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="915" y="927" width="250" height="48" rx="6" fill="#eee8f7" stroke="#9b85ba" stroke-width="1.9"/>
+<text x="1040" y="959.25" font-size="25" text-anchor="middle" fill="#151b22" >AdaLN</text>
+<polyline points="1040,927 1040,894" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="805" y="804" width="470" height="90" rx="6" fill="#fff3cf" stroke="#caa33e" stroke-width="1.9"/>
+<text x="1040" y="834" font-size="25" text-anchor="middle" fill="#151b22" >Multi-Head Self-Attention</text>
+<text x="1040" y="861" font-size="21" text-anchor="middle" fill="#151b22" >QKV → Attention → Projection</text>
+<text x="1040" y="884" font-size="20" text-anchor="middle" fill="#151b22" >9 heads × 64</text>
+<polyline points="1040,804 1040,784" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="767" r="17" fill="#f8fbfc" stroke="#151b22" stroke-width="2"/>
+<text x="1040" y="775" font-size="28" text-anchor="middle" fill="#151b22" >×</text>
+<text x="1001" y="775" font-size="22" text-anchor="end" fill="#151b22" font-family="Georgia, serif" font-style="italic">g_sa</text>
+<polyline points="1040,750 1040,728" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="711" r="17" fill="#fce7e4" stroke="#cb8279" stroke-width="2"/>
+<text x="1040" y="719" font-size="28" text-anchor="middle" fill="#151b22" >+</text>
+<polyline points="1040,694 1040,668" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="915" y="620" width="250" height="48" rx="6" fill="#eee8f7" stroke="#9b85ba" stroke-width="1.9"/>
+<text x="1040" y="652.25" font-size="25" text-anchor="middle" fill="#151b22" >LayerNorm</text>
+<polyline points="1040,620 1040,587" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="805" y="507" width="470" height="80" rx="6" fill="#e6f2dd" stroke="#739c58" stroke-width="1.9"/>
+<text x="1040" y="538" font-size="25" text-anchor="middle" fill="#151b22" >Text Cross-Attention</text>
+<text x="1040" y="568" font-size="21" text-anchor="middle" fill="#151b22" >Q: image features   K,V: text context</text>
+<polyline points="1040,507 1040,484" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="467" r="17" fill="#fce7e4" stroke="#cb8279" stroke-width="2"/>
+<text x="1040" y="475" font-size="28" text-anchor="middle" fill="#151b22" >+</text>
+<polyline points="1040,450 1040,419" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="915" y="371" width="250" height="48" rx="6" fill="#eee8f7" stroke="#9b85ba" stroke-width="1.9"/>
+<text x="1040" y="403.25" font-size="25" text-anchor="middle" fill="#151b22" >AdaLN</text>
+<rect x="770" y="200" width="540" height="135" rx="24" fill="#f0f9ff" stroke="#658fc6" stroke-width="2.2"/>
+<text x="797" y="229" font-size="24" text-anchor="start" fill="#151b22" >Dense MLP</text>
+<rect x="795" y="253" width="150" height="45" rx="6" fill="#e5f0ff" stroke="#658fc6" stroke-width="1.9"/>
+<text x="870" y="283.09" font-size="23" text-anchor="middle" fill="#151b22" >Linear</text>
+<rect x="975" y="253" width="125" height="45" rx="6" fill="#e5f0ff" stroke="#658fc6" stroke-width="1.9"/>
+<text x="1037.5" y="283.09" font-size="23" text-anchor="middle" fill="#151b22" >GELU</text>
+<rect x="1130" y="253" width="150" height="45" rx="6" fill="#e5f0ff" stroke="#658fc6" stroke-width="1.9"/>
+<text x="1205" y="283.09" font-size="23" text-anchor="middle" fill="#151b22" >Linear</text>
+<text x="870" y="324" font-size="20" text-anchor="middle" fill="#151b22" >576 → 2304</text>
+<text x="1205" y="324" font-size="20" text-anchor="middle" fill="#151b22" >2304 → 576</text>
+<polyline points="1040,371 1040,350 750,350 750,275 795,275" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<polyline points="945,275 975,275" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<polyline points="1100,275 1130,275" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<polyline points="1205,253 1205,180 1040,180 1040,162" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="145" r="17" fill="#f8fbfc" stroke="#151b22" stroke-width="2"/>
+<text x="1040" y="153" font-size="28" text-anchor="middle" fill="#151b22" >×</text>
+<text x="1001" y="153" font-size="22" text-anchor="end" fill="#151b22" font-family="Georgia, serif" font-style="italic">g_mlp</text>
+<polyline points="1040,128 1040,107" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<circle cx="1040" cy="90" r="17" fill="#fce7e4" stroke="#cb8279" stroke-width="2"/>
+<text x="1040" y="98" font-size="28" text-anchor="middle" fill="#151b22" >+</text>
+<polyline points="1040,73 1040,48" fill="none" stroke="#151b22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#arr)"/>
+<rect x="970" y="28" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="990" y="28" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1010" y="28" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1030" y="28" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1050" y="28" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1070" y="28" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1090" y="28" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<text x="1040" y="22" font-size="27" text-anchor="middle" fill="#151b22" font-family="Georgia, serif" font-style="italic">hᵢ₊₁</text>
+<rect x="1460" y="105" width="285" height="80" rx="6" fill="#eee8f7" stroke="#9b85ba" stroke-width="1.9"/>
+<text x="1602" y="136" font-size="25" text-anchor="middle" fill="#151b22" >Timestep t</text>
+<text x="1602" y="166" font-size="20" text-anchor="middle" fill="#151b22" >Embedding + AdaLN MLP</text>
+<polyline points="1460,145 1390,145 1390,951" fill="none" stroke="#9a83ba" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" />
+<polyline points="1390,145 1057,145" fill="none" stroke="#9a83ba" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#mod)"/>
+<polyline points="1390,395 1165,395" fill="none" stroke="#9a83ba" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#mod)"/>
+<polyline points="1390,767 1057,767" fill="none" stroke="#9a83ba" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#mod)"/>
+<polyline points="1390,951 1165,951" fill="none" stroke="#9a83ba" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 6" marker-end="url(#mod)"/>
+<text x="1440" y="350" font-size="21" text-anchor="start" fill="#9a83ba" >shift, scale, gate</text>
+<rect x="1470" y="517" width="275" height="60" rx="6" fill="#e6f2dd" stroke="#739c58" stroke-width="1.9"/>
+<text x="1607.5" y="554.92" font-size="24" text-anchor="middle" fill="#151b22" >Text context</text>
+<polyline points="1470,547 1275,547" fill="none" stroke="#739c58" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"  marker-end="url(#ctx)"/>
+<text x="1340" y="532" font-size="23" text-anchor="middle" fill="#151b22" font-family="Georgia, serif" font-style="italic">K,V</text>
+<rect x="1537" y="602" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1557" y="602" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1577" y="602" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1597" y="602" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1617" y="602" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1637" y="602" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<rect x="1657" y="602" width="20" height="20" rx="0" fill="white" stroke="#151b22" stroke-width="1.8"/>
+<text x="1607" y="659" font-size="22" text-anchor="middle" fill="#151b22" >projected to 576</text>
+<text x="1090" y="1106" font-size="23" text-anchor="middle" fill="#151b22" >Supra2-IMG DiT block with timestep modulation and text conditioning.</text>
+</g></svg>

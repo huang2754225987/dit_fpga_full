@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="960" viewBox="0 0 1600 960">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#344054"/></marker>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#2878C8"/></marker>
+    <linearGradient id="head" x1="0" x2="1"><stop offset="0" stop-color="#102A43"/><stop offset="1" stop-color="#1F4E79"/></linearGradient>
+    <style>
+      .title{font:700 30px Arial,'Microsoft YaHei',sans-serif;fill:#172B4D}.sub{font:16px Arial,'Microsoft YaHei',sans-serif;fill:#526579}
+      .h{font:700 21px Arial,'Microsoft YaHei',sans-serif;fill:#18324B}.t{font:16px Arial,'Microsoft YaHei',sans-serif;fill:#243B53}.sm{font:14px Arial,'Microsoft YaHei',sans-serif;fill:#526579}.tiny{font:12px Arial,sans-serif;fill:#526579}
+      .box{fill:#fff;stroke:#CAD5E2;stroke-width:2}.challenge{fill:#FFF5F2;stroke:#E88B75;stroke-width:2}.solution{fill:#EFF7FF;stroke:#6BA3D6;stroke-width:2}.contrib{fill:#F0F8F3;stroke:#75B28A;stroke-width:2}
+      .arrow{fill:none;stroke:#344054;stroke-width:2.4;marker-end:url(#arrow)}.blueArrow{fill:none;stroke:#2878C8;stroke-width:2.6;marker-end:url(#arrowBlue)}
+    </style>
+  </defs>
+  <rect width="1600" height="960" fill="#F7F9FC"/>
+  <text x="800" y="48" text-anchor="middle" class="title">FlashAttention：从显存瓶颈到面向 FPGA 的数据流加速</text>
+  <text x="800" y="77" text-anchor="middle" class="sub">挑战（Challenge）→ 算法机制（FlashAttention）→ 本文设计贡献（Contribution）</text>
+
+  <!-- Three main panels -->
+  <rect x="38" y="105" width="450" height="605" rx="18" class="challenge"/>
+  <rect x="515" y="105" width="570" height="605" rx="18" class="solution"/>
+  <rect x="1112" y="105" width="450" height="605" rx="18" class="contrib"/>
+  <text x="263" y="145" text-anchor="middle" class="h">Challenge｜标准 Attention 的代价</text>
+  <text x="800" y="145" text-anchor="middle" class="h">FlashAttention｜分块、在线归一化</text>
+  <text x="1337" y="145" text-anchor="middle" class="h">Contribution｜FPGA 映射方向</text>
+
+  <!-- challenge sequence -->
+  <rect x="82" y="190" width="360" height="74" rx="12" class="box"/>
+  <text x="262" y="220" text-anchor="middle" class="t">Q、K、V 从外存读取</text>
+  <text x="262" y="245" text-anchor="middle" class="sm">HBM / DDR 带宽与访问次数受限</text>
+  <path d="M262 266 V294" class="arrow"/>
+  <rect x="82" y="300" width="360" height="78" rx="12" class="box"/>
+  <text x="262" y="331" text-anchor="middle" class="t">计算分数矩阵 S = QKᵀ</text>
+  <text x="262" y="357" text-anchor="middle" class="sm">产生庞大的中间结果</text>
+  <path d="M262 380 V408" class="arrow"/>
+  <rect x="82" y="414" width="360" height="78" rx="12" class="box"/>
+  <text x="262" y="445" text-anchor="middle" class="t">Softmax(S) → P，再计算 PV</text>
+  <text x="262" y="471" text-anchor="middle" class="sm">中间矩阵反复写回、读出</text>
+  <path d="M262 494 V522" class="arrow"/>
+  <rect x="82" y="528" width="360" height="115" rx="12" fill="#FCE3DE" stroke="#E88B75" stroke-width="2"/>
+  <text x="262" y="562" text-anchor="middle" class="h" fill="#9E3F2B">核心挑战</text>
+  <text x="262" y="591" text-anchor="middle" class="t">访存开销大、片上容量有限</text>
+  <text x="262" y="617" text-anchor="middle" class="t">长序列下中间状态难以存放</text>
+
+  <!-- middle: tiling and dataflow -->
+  <text x="800" y="181" text-anchor="middle" class="sm">只在片上保留当前 tile 与逐行统计量</text>
+  <rect x="558" y="208" width="145" height="67" rx="10" fill="#E3F1FF" stroke="#6BA3D6" stroke-width="2"/>
+  <text x="630" y="237" text-anchor="middle" class="t">Q tile</text><text x="630" y="259" text-anchor="middle" class="sm">查询块</text>
+  <rect x="745" y="208" width="145" height="67" rx="10" fill="#E3F1FF" stroke="#6BA3D6" stroke-width="2"/>
+  <text x="817" y="237" text-anchor="middle" class="t">K tile</text><text x="817" y="259" text-anchor="middle" class="sm">键块</text>
+  <rect x="932" y="208" width="108" height="67" rx="10" fill="#E3F1FF" stroke="#6BA3D6" stroke-width="2"/>
+  <text x="986" y="237" text-anchor="middle" class="t">V tile</text><text x="986" y="259" text-anchor="middle" class="sm">值块</text>
+  <path d="M704 241 H735" class="blueArrow"/><path d="M891 241 H922" class="blueArrow"/>
+  <rect x="610" y="318" width="380" height="74" rx="12" fill="#D9EAFE" stroke="#2878C8" stroke-width="2.5"/>
+  <text x="800" y="348" text-anchor="middle" class="h">片上矩阵乘单元</text>
+  <text x="800" y="374" text-anchor="middle" class="sm">Q tile × K tileᵀ → score tile</text>
+  <path d="M817 277 V309" class="blueArrow"/><path d="M630 277 V301 H610 V318" class="blueArrow"/>
+  <path d="M800 393 V421" class="blueArrow"/>
+  <rect x="610" y="428" width="380" height="82" rx="12" fill="#FFF1CE" stroke="#D9A62E" stroke-width="2"/>
+  <text x="800" y="460" text-anchor="middle" class="h">Online Softmax</text>
+  <text x="800" y="486" text-anchor="middle" class="sm">逐块更新行最大值 m、归一化和 l</text>
+  <path d="M800 511 V538" class="blueArrow"/>
+  <rect x="610" y="545" width="380" height="75" rx="12" fill="#E5F4E9" stroke="#75B28A" stroke-width="2"/>
+  <text x="800" y="575" text-anchor="middle" class="h">概率 tile × V tile</text>
+  <text x="800" y="601" text-anchor="middle" class="sm">累加输出块；不物化完整注意力矩阵</text>
+  <path d="M986 277 V535" class="blueArrow"/>
+  <path d="M800 621 V652 H1060 V468 H1000" fill="none" stroke="#2878C8" stroke-width="2.2" stroke-dasharray="7 6" marker-end="url(#arrowBlue)"/>
+  <text x="803" y="680" text-anchor="middle" class="sm">遍历后续 K/V tiles，更新统计量与输出</text>
+
+  <!-- Contribution list -->
+  <rect x="1150" y="190" width="374" height="86" rx="12" class="box"/>
+  <circle cx="1180" cy="220" r="16" fill="#328653"/><text x="1180" y="226" text-anchor="middle" font="700 16px Arial" fill="#fff">1</text>
+  <text x="1210" y="220" class="t">分块数据流</text><text x="1210" y="247" class="sm">复用片上 Q/K/V tile，减少外存往返</text>
+  <rect x="1150" y="296" width="374" height="86" rx="12" class="box"/>
+  <circle cx="1180" cy="326" r="16" fill="#328653"/><text x="1180" y="332" text-anchor="middle" font="700 16px Arial" fill="#fff">2</text>
+  <text x="1210" y="326" class="t">在线 Softmax</text><text x="1210" y="353" class="sm">流式更新，不保存完整分数矩阵</text>
+  <rect x="1150" y="402" width="374" height="86" rx="12" class="box"/>
+  <circle cx="1180" cy="432" r="16" fill="#328653"/><text x="1180" y="438" text-anchor="middle" font="700 16px Arial" fill="#fff">3</text>
+  <text x="1210" y="432" class="t">矩阵乘与向量算子协同</text><text x="1210" y="459" class="sm">覆盖 QKᵀ、PV、归一化与残差路径</text>
+  <rect x="1150" y="508" width="374" height="116" rx="12" fill="#E0F0E5" stroke="#75B28A" stroke-width="2"/>
+  <text x="1337" y="543" text-anchor="middle" class="h" fill="#24613A">论文贡献表述</text>
+  <text x="1337" y="574" text-anchor="middle" class="t">面向 FPGA 资源与带宽约束</text>
+  <text x="1337" y="600" text-anchor="middle" class="t">实现可复用、可流式的 Attention 数据通路</text>
+  <text x="1337" y="661" text-anchor="middle" class="tiny">图中为论文表达样例；具体模块按实际实现取舍</text>
+
+  <!-- relation arrows between panels -->
+  <path d="M466 405 H505" class="arrow"/><path d="M1093 405 H1102" class="arrow"/>
+  <rect x="38" y="742" width="1524" height="170" rx="18" fill="#FFFFFF" stroke="#D6DFE8" stroke-width="2"/>
+  <text x="70" y="783" class="h">建议在论文中配套报告的验证指标</text>
+  <rect x="72" y="808" width="325" height="70" rx="12" fill="#F1F5F9" stroke="#CAD5E2"/>
+  <text x="234" y="838" text-anchor="middle" class="t">数值精度</text><text x="234" y="862" text-anchor="middle" class="sm">与软件参考输出误差</text>
+  <rect x="433" y="808" width="325" height="70" rx="12" fill="#F1F5F9" stroke="#CAD5E2"/>
+  <text x="595" y="838" text-anchor="middle" class="t">性能</text><text x="595" y="862" text-anchor="middle" class="sm">周期、吞吐率、端到端延迟</text>
+  <rect x="794" y="808" width="325" height="70" rx="12" fill="#F1F5F9" stroke="#CAD5E2"/>
+  <text x="956" y="838" text-anchor="middle" class="t">资源与功耗</text><text x="956" y="862" text-anchor="middle" class="sm">DSP、BRAM、LUT、板级功耗</text>
+  <rect x="1155" y="808" width="365" height="70" rx="12" fill="#F1F5F9" stroke="#CAD5E2"/>
+  <text x="1337" y="838" text-anchor="middle" class="t">访存行为</text><text x="1337" y="862" text-anchor="middle" class="sm">片外读写量与片上复用效果</text>
+</svg>

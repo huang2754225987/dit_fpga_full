@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "clock_period_ps": 3332,
+  "axi_data_width_bits": 512,
+  "max_burst_beats": 256,
+  "first_response_latency_cycles": 0,
+  "cycles_per_beat": 1,
+  "outstanding_capacity": 1,
+  "read_write_share_channel": true,
+  "memory_parameters_calibrated": false,
+  "onchip_memory": {
+    "capacity_bytes": 65536,
+    "bank_count": 32,
+    "line_bytes": 64,
+    "hit_latency_cycles": 1,
+    "miss_latency_cycles": 1,
+    "bytes_per_cycle_per_bank": 64,
+    "parameters_calibrated": false
+  },
+  "systolic_array": {
+    "rows": 32,
+    "columns": 32,
+    "pipeline_overhead_cycles": 66,
+    "overhead_is_analytical_assumption": true
+  },
+  "parameter_note": "DDR request-level latency and throughput remain uncalibrated. Do not interpret placeholder values as MIG measurements."
+}

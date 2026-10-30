@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2140" height="1860" viewBox="0 0 2140 1860"><defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#45546a"/></marker><marker id="purple" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#8a75ac"/></marker><marker id="muted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 Z" fill="#66768a"/></marker></defs><rect width="100%" height="100%" fill="white"/><g font-family="'Times New Roman', Georgia, serif">
+<text x="1070" y="48" text-anchor="middle" font-size="34" font-weight="700" fill="#233141"><tspan x="1070" dy="0">Supra2-IMG: Quantized Rectified-Flow Text-to-Image Sampling</tspan></text>
+<rect x="35" y="83" width="1060" height="1717" rx="0" fill="white" stroke="#233141" stroke-width="1.8" />
+<rect x="1125" y="83" width="980" height="1717" rx="0" fill="white" stroke="#233141" stroke-width="1.8" />
+<text x="565" y="128" text-anchor="middle" font-size="30" font-weight="700" fill="#233141"><tspan x="565" dy="0">(a) Sampling algorithm</tspan></text>
+<text x="1615" y="128" text-anchor="middle" font-size="30" font-weight="700" fill="#233141"><tspan x="1615" dy="0">(b) One DiT block</tspan></text>
+<rect x="85" y="160" width="355" height="58" rx="7" fill="#edf5e9" stroke="#688c59" stroke-width="1.8" />
+<text x="262.5" y="197" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="262.5" dy="0">Text prompt / null condition</tspan></text>
+<polyline points="262,218 262,247" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="85" y="247" width="355" height="66" rx="7" fill="#edf5e9" stroke="#688c59" stroke-width="1.8" />
+<text x="262.5" y="277" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="262.5" dy="0">T5 text encoder</tspan></text>
+<text x="262.5" y="305" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="262.5" dy="0">Host-side context preparation</tspan></text>
+<polyline points="262,313 262,342" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="85" y="342" width="355" height="77" rx="7" fill="#edf5e9" stroke="#688c59" stroke-width="1.8" />
+<text x="262.5" y="377.5" text-anchor="middle" font-size="24" font-weight="600" fill="#233141"><tspan x="262.5" dy="0">Context projection + mask</tspan></text>
+<text x="262.5" y="405.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="262.5" dy="0">C_cond and C_uncond; 768 → 576</tspan></text>
+<rect x="650" y="160" width="365" height="58" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="832.5" y="197" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="832.5" dy="0">Gaussian latent z₀</tspan></text>
+<polyline points="832,218 832,251" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="650" y="251" width="365" height="65" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="832.5" y="280.5" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="832.5" dy="0">Initialize s = 0</tspan></text>
+<text x="832.5" y="308.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="832.5" dy="0">z₀ ∈ R^(4 × 32 × 32)</tspan></text>
+<polyline points="832,316 832,451 710,451 710,480" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="335" y="454" width="700" height="1000" rx="9" fill="none" stroke="#a8b5c4" stroke-width="1.8" stroke-dasharray="8 6"/>
+<rect x="351" y="439" width="380" height="29" fill="white"/>
+<text x="360" y="460" text-anchor="start" font-size="22" font-weight="600" fill="#66768a"><tspan x="360" dy="0">Evaluate both CFG branches at step s</tspan></text>
+<rect x="465" y="480" width="490" height="74" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="710" y="514" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="710" dy="0">Patchify → x_embed → position add</tspan></text>
+<text x="710" y="542" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="710" dy="0">256 tokens × 576 features</tspan></text>
+<polyline points="710,554 710,590" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="465" y="590" width="490" height="69" rx="7" fill="#f1edfa" stroke="#8a75ac" stroke-width="1.8" />
+<text x="710" y="621.5" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="710" dy="0">Timestep conditioning</tspan></text>
+<text x="710" y="649.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="710" dy="0">Load scale / shift / gate for step s</tspan></text>
+<polyline points="710,659 710,700" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="752" y="691" text-anchor="start" font-size="21" font-weight="400" fill="#66768a"><tspan x="752" dy="0">i = 0</tspan></text>
+<path d="M710,700 L850,755 L710,810 L570,755 Z" fill="#fff5dd" stroke="#ac9050" stroke-width="1.8"/>
+<text x="710" y="763" text-anchor="middle" font-size="24" font-weight="600" fill="#233141"><tspan x="710" dy="0">skip[s, i] = 1?</tspan></text>
+<polyline points="710,810 710,846" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="738" y="833" text-anchor="start" font-size="21" font-weight="400" fill="#66768a"><tspan x="738" dy="0">No</tspan></text>
+<rect x="465" y="846" width="490" height="82" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="710" y="884" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="710" dy="0">Execute DiT block i</tspan></text>
+<text x="710" y="912" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="710" dy="0">Self attention → cross attention → MLP</tspan></text>
+<polyline points="710,928 710,965" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<path d="M710,965 L850,1020 L710,1075 L570,1020 Z" fill="#fff5dd" stroke="#ac9050" stroke-width="1.8"/>
+<text x="710" y="1028" text-anchor="middle" font-size="24" font-weight="600" fill="#233141"><tspan x="710" dy="0">i + 1 &lt; 14?</tspan></text>
+<polyline points="850,755 989,755 989,1020 850,1020" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="965" y="790" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="965" dy="0">Yes</tspan></text>
+<text x="1005" y="952" text-anchor="end" font-size="18" font-weight="400" fill="#66768a"><tspan x="1005" dy="0">h_out = h_in</tspan></text>
+<polyline points="570,1020 410,1020 410,755 570,755" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="400" y="1100" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="400" dy="0">Yes: i ← i + 1</tspan></text>
+<polyline points="710,1075 710,1120" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="738" y="1104" text-anchor="start" font-size="21" font-weight="400" fill="#66768a"><tspan x="738" dy="0">No</tspan></text>
+<rect x="465" y="1120" width="490" height="84" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="710" y="1159" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="710" dy="0">Final LN / AdaLN → projection</tspan></text>
+<text x="710" y="1187" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="710" dy="0">576 → 16; unpatchify to 4 × 32 × 32</tspan></text>
+<polyline points="710,1204 710,1250" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="710" y="1233" text-anchor="middle" font-size="21" font-weight="400" fill="#66768a"><tspan x="710" dy="0">v_cond and v_uncond</tspan></text>
+<rect x="465" y="1250" width="490" height="76" rx="7" fill="#faecea" stroke="#b77c73" stroke-width="1.8" />
+<text x="710" y="1285" text-anchor="middle" font-size="24" font-weight="600" fill="#233141"><tspan x="710" dy="0">Classifier-free guidance (CFG = 3)</tspan></text>
+<text x="710" y="1313" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="710" dy="0">v = v_uncond + 3 × (v_cond − v_uncond)</tspan></text>
+<polyline points="710,1326 710,1365" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="465" y="1365" width="490" height="76" rx="7" fill="#faecea" stroke="#b77c73" stroke-width="1.8" />
+<text x="710" y="1400" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="710" dy="0">Euler-flow update</tspan></text>
+<text x="710" y="1428" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="710" dy="0">z_(s+1) = z_s + Δt_s × v</tspan></text>
+<polyline points="710,1441 710,1475" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="545" y="1475" width="330" height="48" rx="7" fill="#f4f5f7" stroke="#45546a" stroke-width="1.8" />
+<text x="710" y="1507" text-anchor="middle" font-size="23" font-weight="600" fill="#233141"><tspan x="710" dy="0">s ← s + 1</tspan></text>
+<polyline points="710,1523 710,1535" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<path d="M710,1535 L850,1590 L710,1645 L570,1590 Z" fill="#fff5dd" stroke="#ac9050" stroke-width="1.8"/>
+<text x="710" y="1598" text-anchor="middle" font-size="24" font-weight="600" fill="#233141"><tspan x="710" dy="0">s &lt; 50?</tspan></text>
+<polyline points="570,1590 285,1590 285,517 465,517" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="304" y="1538" text-anchor="start" font-size="22" font-weight="400" fill="#66768a"><tspan x="304" dy="0">Yes</tspan><tspan x="304" dy="30">next step</tspan></text>
+<polyline points="710,1645 710,1690" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="738" y="1673" text-anchor="start" font-size="21" font-weight="400" fill="#66768a"><tspan x="738" dy="0">No</tspan></text>
+<rect x="465" y="1690" width="490" height="73" rx="7" fill="#edf5e9" stroke="#688c59" stroke-width="1.8" />
+<text x="710" y="1723.5" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="710" dy="0">VAE decoder → 256 × 256 image</tspan></text>
+<text x="710" y="1751.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="710" dy="0">Host-side decode of final latent z₅₀</tspan></text>
+<polyline points="85,380 64,380 64,886 465,886" fill="none" stroke="#8a75ac" stroke-width="2.1" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#purple)"/>
+<rect x="78" y="847" width="200" height="58" fill="white"/>
+<text x="89" y="869" text-anchor="start" font-size="20" font-weight="400" fill="#8a75ac"><tspan x="89" dy="0">Text context + mask</tspan><tspan x="89" dy="26">reused at each step</tspan></text>
+<text x="130" y="537" text-anchor="middle" font-size="23" font-weight="600" fill="#66768a"><tspan x="130" dy="0">50-step</tspan><tspan x="130" dy="30">feedback</tspan></text>
+<text x="1615" y="171" text-anchor="middle" font-size="23" font-weight="400" fill="#66768a"><tspan x="1615" dy="0">256 tokens · width 576 · 9 heads × 64 · MLP ratio 4</tspan></text>
+<rect x="1395" y="220" width="450" height="55" rx="7" fill="#f4f5f7" stroke="#45546a" stroke-width="1.8" />
+<text x="1620" y="255.5" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="1620" dy="0">Input feature h_i</tspan></text>
+<polyline points="1620,275 1620,330" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1210" y="306" width="810" height="278" rx="9" fill="none" stroke="#a8b5c4" stroke-width="1.8" stroke-dasharray="7 6"/>
+<text x="1230" y="332" text-anchor="start" font-size="21" font-weight="600" fill="#66768a"><tspan x="1230" dy="0">Self attention</tspan></text>
+<rect x="1395" y="350" width="450" height="56" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="1620" y="386" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="1620" dy="0">LayerNorm + AdaLN</tspan></text>
+<polyline points="1620,406 1620,434" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1395" y="434" width="450" height="79" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="1620" y="470.5" text-anchor="middle" font-size="24" font-weight="600" fill="#233141"><tspan x="1620" dy="0">QKV → QKᵀ / √64 → softmax</tspan></text>
+<text x="1620" y="498.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1620" dy="0">PV → output projection</tspan></text>
+<polyline points="1620,513 1620,540" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<circle cx="1620" cy="563" r="23" fill="#faecea" stroke="#b77c73" stroke-width="1.8"/>
+<text x="1620" y="573" text-anchor="middle" font-size="35" font-weight="400" fill="#233141"><tspan x="1620" dy="0">+</tspan></text>
+<text x="1672" y="570" text-anchor="start" font-size="20" font-weight="400" fill="#66768a"><tspan x="1672" dy="0">gate × update</tspan></text>
+<polyline points="1395,247 1278,247 1278,563 1597,563" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<polyline points="1620,586 1620,649" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1210" y="620" width="810" height="262" rx="9" fill="none" stroke="#a8b5c4" stroke-width="1.8" stroke-dasharray="7 6"/>
+<text x="1230" y="646" text-anchor="start" font-size="21" font-weight="600" fill="#66768a"><tspan x="1230" dy="0">Cross attention</tspan></text>
+<rect x="1395" y="665" width="450" height="53" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="1620" y="699.5" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="1620" dy="0">LayerNorm</tspan></text>
+<polyline points="1620,718 1620,745" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1395" y="745" width="450" height="78" rx="7" fill="#edf5e9" stroke="#688c59" stroke-width="1.8" />
+<text x="1620" y="781" text-anchor="middle" font-size="23" font-weight="600" fill="#233141"><tspan x="1620" dy="0">QKᵀ → masked softmax → PV</tspan></text>
+<text x="1620" y="809" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1620" dy="0">Output projection; Q: image, K/V: text</tspan></text>
+<polyline points="1620,823 1620,849" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<circle cx="1620" cy="872" r="23" fill="#faecea" stroke="#b77c73" stroke-width="1.8"/>
+<text x="1620" y="882" text-anchor="middle" font-size="35" font-weight="400" fill="#233141"><tspan x="1620" dy="0">+</tspan></text>
+<polyline points="1620,605 1297,605 1297,872 1597,872" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<text x="1240" y="793" text-anchor="middle" font-size="21" font-weight="400" fill="#8a75ac"><tspan x="1240" dy="0">C_b</tspan><tspan x="1240" dy="30">+ mask</tspan></text>
+<polyline points="1285,787 1395,787" fill="none" stroke="#8a75ac" stroke-width="2.1" stroke-linejoin="round" stroke-dasharray="6 5" marker-end="url(#purple)"/>
+<polyline points="1620,895 1620,960" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1210" y="933" width="810" height="263" rx="9" fill="none" stroke="#a8b5c4" stroke-width="1.8" stroke-dasharray="7 6"/>
+<text x="1230" y="959" text-anchor="start" font-size="21" font-weight="600" fill="#66768a"><tspan x="1230" dy="0">Gated MLP</tspan></text>
+<rect x="1395" y="979" width="450" height="54" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="1620" y="1014" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="1620" dy="0">LayerNorm + AdaLN</tspan></text>
+<polyline points="1620,1033 1620,1060" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1395" y="1060" width="450" height="73" rx="7" fill="#fff5dd" stroke="#ac9050" stroke-width="1.8" />
+<text x="1620" y="1093.5" text-anchor="middle" font-size="24" font-weight="600" fill="#233141"><tspan x="1620" dy="0">MLP.0 → GELU(tanh) → MLP.2</tspan></text>
+<text x="1620" y="1121.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1620" dy="0">576 → 2304 → 576</tspan></text>
+<polyline points="1620,1133 1620,1162" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<circle cx="1620" cy="1185" r="23" fill="#faecea" stroke="#b77c73" stroke-width="1.8"/>
+<text x="1620" y="1195" text-anchor="middle" font-size="35" font-weight="400" fill="#233141"><tspan x="1620" dy="0">+</tspan></text>
+<text x="1672" y="1192" text-anchor="start" font-size="20" font-weight="400" fill="#66768a"><tspan x="1672" dy="0">gate × update</tspan></text>
+<polyline points="1620,918 1316,918 1316,1185 1597,1185" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<polyline points="1620,1208 1620,1245" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1395" y="1245" width="450" height="55" rx="7" fill="#f4f5f7" stroke="#45546a" stroke-width="1.8" />
+<text x="1620" y="1280.5" text-anchor="middle" font-size="25" font-weight="600" fill="#233141"><tspan x="1620" dy="0">Output feature h_(i+1)</tspan></text>
+<rect x="1170" y="1345" width="890" height="199" rx="8" fill="white" stroke="#537da9" stroke-width="1.8" />
+<text x="1615" y="1380" text-anchor="middle" font-size="25" font-weight="700" fill="#233141"><tspan x="1615" dy="0">Quantized linear operator (QLinear)</tspan></text>
+<rect x="1193" y="1401" width="183" height="71" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="1284.5" y="1433.5" text-anchor="middle" font-size="21" font-weight="600" fill="#233141"><tspan x="1284.5" dy="0">Hadamard</tspan></text>
+<text x="1284.5" y="1461.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1284.5" dy="0">FP16 features</tspan></text>
+<polyline points="1376,1436 1400,1436" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1400" y="1401" width="183" height="71" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="1491.5" y="1433.5" text-anchor="middle" font-size="21" font-weight="600" fill="#233141"><tspan x="1491.5" dy="0">Dynamic INT8</tspan></text>
+<text x="1491.5" y="1461.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1491.5" dy="0">per-token scale</tspan></text>
+<polyline points="1583,1436 1607,1436" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1607" y="1401" width="183" height="71" rx="7" fill="#fff5dd" stroke="#ac9050" stroke-width="1.8" />
+<text x="1698.5" y="1433.5" text-anchor="middle" font-size="21" font-weight="600" fill="#233141"><tspan x="1698.5" dy="0">INT8 GEMM</tspan></text>
+<text x="1698.5" y="1461.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1698.5" dy="0">INT32 sum</tspan></text>
+<polyline points="1790,1436 1814,1436" fill="none" stroke="#45546a" stroke-width="2.1" stroke-linejoin="round"  marker-end="url(#arrow)"/>
+<rect x="1814" y="1401" width="183" height="71" rx="7" fill="#eaf3fc" stroke="#537da9" stroke-width="1.8" />
+<text x="1905.5" y="1433.5" text-anchor="middle" font-size="21" font-weight="600" fill="#233141"><tspan x="1905.5" dy="0">Scale + bias</tspan></text>
+<text x="1905.5" y="1461.5" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1905.5" dy="0">FP16 output</tspan></text>
+<text x="1615" y="1512" text-anchor="middle" font-size="23" font-weight="400" fill="#233141"><tspan x="1615" dy="0">y = FP16(acc_INT32 × s_token × s_weight + bias)</tspan></text>
+<rect x="1170" y="1580" width="890" height="167" rx="8" fill="white" stroke="#8a75ac" stroke-width="1.8" stroke-dasharray="7 5"/>
+<text x="1615" y="1616" text-anchor="middle" font-size="25" font-weight="700" fill="#8a75ac"><tspan x="1615" dy="0">Optional DiCache policy</tspan></text>
+<text x="1615" y="1654" text-anchor="middle" font-size="23" font-weight="400" fill="#233141"><tspan x="1615" dy="0">Shallow probe → refresh full path OR reuse residual anchors</tspan></text>
+<text x="1615" y="1687" text-anchor="middle" font-size="23" font-weight="400" fill="#233141"><tspan x="1615" dy="0">Reuse: DCTA alignment → reconstruct branch velocity</tspan></text>
+<text x="1615" y="1724" text-anchor="middle" font-size="20" font-weight="400" fill="#66768a"><tspan x="1615" dy="0">Selectable alternative to the supplied block-skip schedule</tspan></text>
+<text x="1070" y="1832" text-anchor="middle" font-size="22" font-weight="400" fill="#66768a"><tspan x="1070" dy="0">Algorithm specification. Full 50-step FPGA execution is an integration target; this figure does not report a verified inference run.</tspan></text>
+</g></svg>

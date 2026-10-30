@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "description": "Measured block-13 transaction phase ledger; aggregate reference only, not request-level DDR timing.",
+  "reference": {
+    "clock_period_ps": 3332,
+    "axi_data_width_bits": 512,
+    "input_dma_cycles": 178086,
+    "block_cycles": 4442603,
+    "output_dma_cycles": 43145,
+    "total_cycles": 4663834,
+    "weight_wait_cycles_included_in_block": 385969,
+    "bytes_read": 5709312,
+    "bytes_written": 294912
+  },
+  "tasks": [
+    {"id": "input_dma", "stage": "input_dma", "dependencies": [], "resources": ["DMA"], "duration_cycles": 178086, "bytes_read": 0, "bytes_written": 0},
+    {"id": "LN0", "stage": "LN0", "dependencies": ["input_dma"], "resources": ["LN"], "duration_cycles": 13900},
+    {"id": "QKV", "stage": "QKV", "dependencies": ["LN0"], "resources": ["ARRAY"], "duration_cycles": 531053},
+    {"id": "ATTN_SELF", "stage": "ATTN_SELF", "dependencies": ["QKV"], "resources": ["ARRAY"], "duration_cycles": 1131363},
+    {"id": "SPROJ", "stage": "SPROJ", "dependencies": ["ATTN_SELF"], "resources": ["ARRAY"], "duration_cycles": 290212},
+    {"id": "RES0", "stage": "RES0", "dependencies": ["SPROJ"], "resources": ["RESIDUAL"], "duration_cycles": 4610},
+    {"id": "LN1", "stage": "LN1", "dependencies": ["RES0"], "resources": ["LN"], "duration_cycles": 13900},
+    {"id": "CQ", "stage": "CQ", "dependencies": ["LN1"], "resources": ["ARRAY"], "duration_cycles": 288335},
+    {"id": "CKV", "stage": "CKV", "dependencies": ["CQ"], "resources": ["ARRAY"], "duration_cycles": 96691},
+    {"id": "ATTN_CROSS", "stage": "ATTN_CROSS", "dependencies": ["CKV"], "resources": ["ARRAY"], "duration_cycles": 280611},
+    {"id": "CPROJ", "stage": "CPROJ", "dependencies": ["ATTN_CROSS"], "resources": ["ARRAY"], "duration_cycles": 290044},
+    {"id": "RES1", "stage": "RES1", "dependencies": ["CPROJ"], "resources": ["RESIDUAL"], "duration_cycles": 4610},
+    {"id": "LN2", "stage": "LN2", "dependencies": ["RES1"], "resources": ["LN"], "duration_cycles": 13900},
+    {"id": "MLP0", "stage": "MLP0", "dependencies": ["LN2"], "resources": ["ARRAY"], "duration_cycles": 652317},
+    {"id": "GELU", "stage": "GELU", "dependencies": ["MLP0"], "resources": ["GELU"], "duration_cycles": 18434},
+    {"id": "MLP2", "stage": "MLP2", "dependencies": ["GELU"], "resources": ["ARRAY"], "duration_cycles": 808012},
+    {"id": "RES2", "stage": "RES2", "dependencies": ["MLP2"], "resources": ["RESIDUAL"], "duration_cycles": 4610},
+    {"id": "FINAL_IDLE", "stage": "FINAL_IDLE", "dependencies": ["RES2"], "resources": ["CONTROL"], "duration_cycles": 1},
+    {"id": "output_dma", "stage": "output_dma", "dependencies": ["FINAL_IDLE"], "resources": ["DMA"], "duration_cycles": 43145, "bytes_read": 0, "bytes_written": 294912}
+  ]
+}

@@ -1,0 +1,33 @@
+param(
+    [Parameter(Mandatory=$true)][string]$SynthRunTag,
+    [Parameter(Mandatory=$true)][double]$ClockPeriodNs
+)
+
+$ErrorActionPreference = 'Stop'
+$culture = [System.Globalization.CultureInfo]::InvariantCulture
+$periodArg = $ClockPeriodNs.ToString('0.000', $culture)
+$periodTag = $periodArg.Replace('.', 'p')
+$runTag = Get-Date -Format 'yyyyMMdd_HHmmss'
+$repo = 'D:\graduation_design\npu-main\supra2_img_fpga'
+$vivado = 'D:\soft\vitis\Vivado\2021.1\bin\vivado.bat'
+if (-not $env:PROCESSOR_ARCHITECTURE) { $env:PROCESSOR_ARCHITECTURE = 'AMD64' }
+Set-Location $repo
+$log = Join-Path $repo "build\supra2_dit_compute_bridge_impl_${periodTag}ns_${runTag}_vivado.log"
+$journal = "build/supra2_dit_compute_bridge_impl_${periodTag}ns_${runTag}.jou"
+$vivadoLog = "build/supra2_dit_compute_bridge_impl_${periodTag}ns_${runTag}_internal.log"
+& $vivado -mode batch -journal $journal -log $vivadoLog `
+    -source scripts/implement_supra2_dit_compute_bridge_ooc.tcl `
+    -tclargs $periodArg $SynthRunTag $runTag *> $log
+$outDir = "build\supra2_dit_compute_bridge\vivado_ooc_${periodTag}ns_${runTag}"
+$timing = Join-Path $outDir 'routed_timing_summary.rpt'
+$drc = Join-Path $outDir 'routed_drc.rpt'
+if ($LASTEXITCODE -ne 0 -or -not (Test-Path $timing) -or -not (Test-Path $drc)) {
+    Get-Content -LiteralPath $log -Tail 100
+    throw "Compute-bridge OOC implementation did not complete; see $log"
+}
+Get-Content -LiteralPath $timing -TotalCount 90
+if (-not (Select-String -LiteralPath $timing `
+        -Pattern '^All user specified timing constraints are met\.$' -Quiet)) {
+    throw "Compute-bridge OOC route completed, but timing did not meet ${periodArg} ns; see $timing"
+}
+"Compute-bridge OOC place-and-route PASS; log: $log"

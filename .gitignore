@@ -1,0 +1,14 @@
+model/*.pt
+model/*.safetensors
+model/*.bin
+__pycache__/
+*.py[cod]
+outputs/
+build/
+*.ucode
+*.ucode.txt
+/compiler/compiler_backend_py/ucode.bin
+/compiler/compiler_backend_py/ucode.cfg
+/compiler/compiler_backend_py/ucode.txt
+/compiler/compiler_backend_py/_test_ucode.bin
+/compiler/compiler_backend_py/_test_ucode.txt

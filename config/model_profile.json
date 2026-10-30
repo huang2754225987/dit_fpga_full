@@ -1,0 +1,45 @@
+{
+  "model_id": "SupraLabs/Supra2-IMG",
+  "task": "text-to-image",
+  "checkpoint": "model/model_final_ema.pt",
+  "image_size": 256,
+  "latent_shape": [4, 32, 32],
+  "patch_size": 2,
+  "sequence_tokens": 256,
+  "d_model": 576,
+  "depth": 14,
+  "attention_heads": 9,
+  "head_dim": 64,
+  "mlp_ratio": 4.0,
+  "text_encoder": {
+    "model_id": "google/flan-t5-base",
+    "context_length": 128,
+    "embedding_dim": 768,
+    "execution": "host"
+  },
+  "vae": {
+    "model_id": "stabilityai/sd-vae-ft-mse",
+    "latent_scale": 0.18215,
+    "execution": "host"
+  },
+  "sampling": {
+    "method": "euler-flow",
+    "steps": 50,
+    "cfg": 3.0
+  },
+  "fpga_target": {
+    "array_m": 32,
+    "array_n": 32,
+    "axi_data_width": 256,
+    "execution_mode": "graph",
+    "weight_dtype": "int8_qlinear_fp16_passthrough",
+    "activation_dtype": "fp16_input_fp16_hadamard_int8_qlinear",
+    "hadamard_intermediate_dtype": "fp32_stage_rounded_final_fp16",
+    "accumulator_dtype": "int32",
+    "qlinear_epilogue_dtype": "fp32",
+    "qlinear_output_dtype": "fp16",
+    "cfg_batch_rows": 512,
+    "array_row_tile": 32,
+    "array_channel_tile": 32
+  }
+}
